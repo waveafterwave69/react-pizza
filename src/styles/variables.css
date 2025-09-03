@@ -1,0 +1,15 @@
+:root {
+    --container-width: 1920px;
+    --container-padding-x: 24px;
+    --container-padding-mobile-x: 16px;
+
+    --font-family: 'Inter', sans-serif;
+
+    --color-white: #ffffff;
+    --color-yellow: #FFDF8C;
+    --color-orange: #FE5F1E;
+    --color-gray: #282828;
+    --color-black: #181818;
+
+    --transition-duration: 0.2s;
+}
