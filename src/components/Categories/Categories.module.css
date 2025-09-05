@@ -1,0 +1,26 @@
+.categories {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+    flex-wrap: wrap;
+}
+
+.categories__list {
+    display: flex;
+    column-gap: 15px;
+}
+
+.categories__burger {
+    display: none;
+}
+
+@media (max-width: 1440px) {
+    .categories__list {
+        display: none;
+    }
+
+    .categories__burger {
+        display: block;
+    }
+}

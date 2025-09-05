@@ -1,0 +1,150 @@
+.pizza {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+}
+
+.pizza__name {
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #000;
+    margin-bottom: 22px;
+}
+
+.pizza__buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    margin-bottom: 17px;
+    background-color: #f1f1f1;
+    padding: 7px 10px;
+    border-radius: 10px;
+}
+
+.testo__buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #2c2c2c;
+}
+
+.pizza__order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pizza__price {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    color: #000;
+}
+
+.pizza__button {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-orange);
+    padding: 10px 25px;
+    border: 1px solid var(--color-orange);
+    border-radius: 30px;
+}
+
+.pizza__button:hover {
+    color: #fff;
+    background-color: var(--color-orange);
+}
+
+@media (max-width: 1024px) {
+    .pizza__name {
+        font-weight: 800;
+        font-size: 20px;
+        letter-spacing: 0.01em;
+        text-align: center;
+        color: #000;
+        margin-bottom: 22px;
+    }
+
+    .pizza__img {
+        width: 200px;
+        margin-bottom: 5px;
+    }
+
+    .pizza__buttons {
+        row-gap: 5px;
+        margin-bottom: 17px;
+        padding: 7px 10px;
+    }
+
+    .button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .pizza__price {
+        font-size: 20px;
+    }
+
+    .pizza__order {
+        display: flex;
+        row-gap: 15px;
+        flex-direction: column;
+    }
+
+    .pizza__button {
+        width: 230px;
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 425px) {
+    .pizza__name {
+        font-size: 19px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .pizza__img {
+        width: 150px;
+        margin-bottom: 5px;
+    }
+
+    .pizza__buttons {
+        row-gap: 5px;
+        margin-bottom: 10px;
+        padding: 8px 8px;
+    }
+
+    .button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .pizza__price {
+        font-size: 18px;
+    }
+
+    .pizza__order {
+        display: flex;
+        row-gap: 10px;
+        flex-direction: column;
+    }
+
+    .pizza__button {
+        width: 230px;
+        font-size: 15px;
+        padding: 8px 15px;
+    }
+}

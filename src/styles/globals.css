@@ -13,6 +13,13 @@ body {
     background-color: var(--color-yellow);
 }
 
+.background {
+    background-color: var(--color-white);
+    margin: 40px 45px;
+    border-radius: 10px;
+    padding: 50px 0px 100px;
+}
+
 .container {
     max-width: var(--container-width);
     padding: 0 var(--container-padding-x);
@@ -22,6 +29,22 @@ body {
 :focus-visible,
 a:focus-visible {
     outline: auto;
+}
+
+@media (max-width: 768px) {
+    .background {
+        margin: 20px 25px;
+        border-radius: 10px;
+        padding: 40px 10px 60px;
+    }
+}
+
+@media (max-width: 425px) {
+    .background {
+        margin: 15px 15px;
+        border-radius: 10px;
+        padding: 20px 10px 40px;
+    }
 }
 
 @media (max-width: 500px) {

@@ -1,0 +1,27 @@
+.category__item {
+    padding: 10px 30px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #2c2c2c;
+}
+
+.category__item:hover {
+    background-color: #dadada;
+}
+
+@media (max-width: 768px) {
+    .category__item {
+        padding: 10px 30px;
+        background-color: #f0f0f0;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+        text-align: center;
+        color: #2c2c2c;
+    }
+}
