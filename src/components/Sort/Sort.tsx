@@ -47,6 +47,7 @@ const Sort: React.FC<SortProps> = ({ sorts, text = 'Сортировка по' }
                         <ul className={styles.sort__list}>
                             {sorts.map((sort) => (
                                 <SortItem
+                                    type={type}
                                     key={sort}
                                     sort={sort}
                                     setSortType={setType}

@@ -19,13 +19,15 @@ const Header: React.FC = () => {
                         </div>
                     </div>
                 </Link>
-                <button className={styles.header__cart}>
-                    <p className={styles.cart__price}>520 ₽</p>
-                    <div className={styles.count}>
-                        <img src={cartImg} alt="корзина" />
-                        <p className={styles.cart__count}>3</p>
-                    </div>
-                </button>
+                <Link to="/cart">
+                    <button className={styles.header__cart}>
+                        <p className={styles.cart__price}>520 ₽</p>
+                        <div className={styles.count}>
+                            <img src={cartImg} alt="корзина" />
+                            <p className={styles.cart__count}>3</p>
+                        </div>
+                    </button>
+                </Link>
             </header>
         </>
     )
