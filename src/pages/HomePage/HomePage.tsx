@@ -3,9 +3,8 @@ import Categories from '../../components/Categories/Categories'
 import PizzaList from '../../components/PizzaList/PizzaList'
 import Sort from '../../components/Sort/Sort'
 
-import { sorts } from '../../data/data'
-
 import styles from './HomePage.module.css'
+import PizzaProvider from '../../context/PizzaProvider'
 
 const HomePage: React.FC = () => {
     useEffect(() => {
@@ -14,11 +13,13 @@ const HomePage: React.FC = () => {
 
     return (
         <>
-            <section className={styles.subheader}>
-                <Categories />
-                <Sort sorts={sorts} />
-            </section>
-            <PizzaList />
+            <PizzaProvider>
+                <section className={styles.subheader}>
+                    <Categories />
+                    <Sort />
+                </section>
+                <PizzaList />
+            </PizzaProvider>
         </>
     )
 }

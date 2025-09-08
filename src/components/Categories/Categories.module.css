@@ -4,6 +4,7 @@
     align-items: center;
     column-gap: 20px;
     flex-wrap: wrap;
+    width: 80%;
 }
 
 .categories__list {
@@ -11,16 +12,23 @@
     column-gap: 15px;
 }
 
-.categories__burger {
-    display: none;
-}
-
 @media (max-width: 1440px) {
-    .categories__list {
-        display: none;
+    .categories {
+        width: 100%;
     }
 
-    .categories__burger {
-        display: block;
+    .categories__list {
+        overflow: scroll;
+        width: 100%;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 425px) {
+    .categories__list {
+        column-gap: 8px;
+        margin-top: -10px;
+        margin-bottom: 5px;
     }
 }

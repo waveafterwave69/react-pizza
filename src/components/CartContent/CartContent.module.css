@@ -1,11 +1,25 @@
 .cart {
+    width: 820px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 550px;
     margin: 0 auto;
-    height: 60vh;
-    margin-top: 50px;
+}
+
+.cart__list {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.cart__row {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
 }
 
 .cart__title {
@@ -13,30 +27,69 @@
     font-size: 32px;
     letter-spacing: 0.01em;
     color: #000;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    column-gap: 17px;
 }
 
-.cart__text {
+.cart__delete {
     font-weight: 400;
-    font-size: 18px;
-    line-height: 145%;
-    letter-spacing: 0.01em;
-    text-align: center;
-    color: #777;
-    margin-bottom: 50px;
+    font-size: 16px;
+    color: #b6b6b6;
+    display: flex;
+    align-items: center;
+    column-gap: 7px;
 }
 
-.cart__img {
-    margin-bottom: 70px;
+.cart__info {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.cart__total,
+.cart__price {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    color: #000;
+}
+
+.cart__total span {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.cart__price span {
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--color-orange);
+}
+
+.cart__buttons {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }
 
 .cart__button {
-    border-radius: 30px;
-    background: #282828;
-    font-weight: 700;
+    padding: 18px 40px;
+    font-weight: 400;
     font-size: 16px;
-    letter-spacing: 0.01em;
     text-align: center;
-    color: #fff;
-    padding: 14px 35px;
+    color: #cacaca;
+    display: flex;
+    column-gap: 10px;
+    border-radius: 30px;
+    border: 1px solid #d3d3d3;
+}
+
+.cart__second {
+    background-color: var(--color-orange);
+    color: var(--color-white);
 }
