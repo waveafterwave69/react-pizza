@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const getPizzas = async () => {
     const response = await fetch(
         'https://68bbd6870f2491613edd6539.mockapi.io/pizzas'
@@ -16,29 +18,20 @@ type Sort = 'rating' | 'price' | 'title'
 
 export const getCategoySortPizzas = async (
     sort: Sort = 'rating',
-    categoryNumber: number
+    categoryNumber: number,
+    searchValue: string,
+    page: number
 ) => {
-    if (categoryNumber) {
-        const response = await fetch(
-            `https://68bbd6870f2491613edd6539.mockapi.io/pizzas?sortBy=${sort}&category=${categoryNumber}&order=desc`
-        )
+    const category = categoryNumber > 0 ? `category=${categoryNumber}` : ''
+    const search = searchValue.length > 0 ? `search=${searchValue}` : ''
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`)
-        }
+    const response = await axios.get(
+        `https://68bbd6870f2491613edd6539.mockapi.io/pizzas?sortBy=${sort}&order=desc&${category}&${search}&limit=8&page=${page}`
+    )
 
-        const data = await response.json()
-        return data
-    } else {
-        const response = await fetch(
-            `https://68bbd6870f2491613edd6539.mockapi.io/pizzas?sortBy=${sort}&order=desc`
-        )
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`)
-        }
-
-        const data = await response.json()
-        return data
+    if (response.status !== 200) {
+        throw new Error('ОШИБКА')
     }
+
+    return response.data
 }

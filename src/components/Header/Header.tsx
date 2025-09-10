@@ -3,6 +3,7 @@ import styles from './Header.module.css'
 import pizzaImgLogo from '../../assets/pizza-logo.svg'
 import cartImg from '../../assets/cart.svg'
 import { Link } from 'react-router'
+import Search from '../Search/Search'
 
 const Header: React.FC = () => {
     return (
@@ -19,6 +20,7 @@ const Header: React.FC = () => {
                         </div>
                     </div>
                 </Link>
+                <Search />
                 <Link to="/cart">
                     <button className={styles.header__cart}>
                         <p className={styles.cart__price}>520 ₽</p>

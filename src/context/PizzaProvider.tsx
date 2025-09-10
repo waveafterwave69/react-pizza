@@ -16,18 +16,26 @@ interface PizzaContextType {
     pizzas: Pizza[]
     isLoading: boolean
     category: number
+    searchValue: string
     sort: string
     setCategory: (category: number) => void
     setSort: (sort: string) => void
+    setSearchValue: (value: string) => void
+    setPage: (page: number) => void
+    page: number
 }
 
 export const PizzaContext = createContext<PizzaContextType>({
     pizzas: [],
     isLoading: false,
     category: 0,
+    searchValue: '',
     sort: 'rating',
     setCategory: () => {},
     setSort: () => {},
+    setSearchValue: () => {},
+    setPage: () => {},
+    page: 1,
 })
 
 interface PizzaProviderProps {
@@ -39,6 +47,8 @@ const PizzaProvider: React.FC<PizzaProviderProps> = ({ children }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [category, setCategory] = useState<number>(0)
     const [sort, setSort] = useState<string>('rating')
+    const [searchValue, setSearchValue] = useState<string>('')
+    const [page, setPage] = useState<number>(1)
 
     useEffect(() => {
         const loadPizzas = async () => {
@@ -46,8 +56,11 @@ const PizzaProvider: React.FC<PizzaProviderProps> = ({ children }) => {
             try {
                 const initialPizzas = await getCategoySortPizzas(
                     sort as 'rating' | 'price' | 'title',
-                    category
+                    category,
+                    searchValue,
+                    page
                 )
+
                 setPizzas(initialPizzas)
             } catch (error) {
                 console.error('Error fetching pizzas:', error)
@@ -57,7 +70,7 @@ const PizzaProvider: React.FC<PizzaProviderProps> = ({ children }) => {
         }
 
         loadPizzas()
-    }, [category, sort])
+    }, [category, sort, searchValue, page])
 
     const contextValue: PizzaContextType = {
         pizzas,
@@ -66,6 +79,10 @@ const PizzaProvider: React.FC<PizzaProviderProps> = ({ children }) => {
         sort,
         setCategory,
         setSort,
+        searchValue,
+        setSearchValue,
+        setPage,
+        page,
     }
 
     return (

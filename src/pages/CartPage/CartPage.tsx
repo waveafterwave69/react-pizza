@@ -1,9 +1,9 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 // import styles from './CartPage.module.css'
 import CartContent from '../../components/CartContent/CartContent'
 
 const CartPage: React.FC = () => {
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
