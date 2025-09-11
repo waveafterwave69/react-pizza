@@ -6,14 +6,14 @@ import sortImg from '../../assets/sort.svg'
 import sortCloseImg from '../../assets/sort-close.svg'
 
 import SortItem from '../SortItem/SortItem'
+import { sorts } from '../../data/data'
 
 interface SortProps {
-    sorts: string[]
     text?: string
 }
 
-const Sort: React.FC<SortProps> = ({ sorts, text = 'Сортировка по' }) => {
-    const [type, setType] = useState<string>(sorts[0])
+const Sort: React.FC<SortProps> = ({ text = 'Сортировка по' }) => {
+    const [type, setType] = useState<string>(sorts[0].nameRu)
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const toggleOpen = () => {
@@ -47,8 +47,10 @@ const Sort: React.FC<SortProps> = ({ sorts, text = 'Сортировка по' }
                         <ul className={styles.sort__list}>
                             {sorts.map((sort) => (
                                 <SortItem
-                                    key={sort}
-                                    sort={sort}
+                                    type={type}
+                                    key={sort.nameRu}
+                                    sort={sort.nameRu}
+                                    nameEn={sort.nameEn}
                                     setSortType={setType}
                                     setIsOpen={setIsOpen}
                                 />

@@ -1,0 +1,166 @@
+.item {
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 15px;
+    padding: 30px 30px;
+    border-radius: 20px;
+    width: 900px;
+}
+
+.item__info {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.item__img {
+    width: 130px;
+}
+
+.item__text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3px;
+}
+
+.item__title {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    color: #000;
+}
+
+.item__type {
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    color: #8d8d8d;
+}
+
+.item__buy {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 10px;
+    width: 300px;
+}
+
+.item__buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.item__buttons span {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    color: #000;
+}
+
+.item__price {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    color: #000;
+}
+
+@media (max-width: 1024px) {
+    .item {
+        column-gap: 15px;
+        padding: 10px 30px;
+        width: 700px;
+    }
+
+    .item__info {
+        column-gap: 10px;
+    }
+
+    .item__img {
+        width: 100px;
+    }
+
+    .item__text {
+        row-gap: 2px;
+    }
+
+    .item__title {
+        font-size: 21px;
+    }
+
+    .item__type {
+        font-size: 17px;
+    }
+
+    .item__buy {
+        column-gap: 10px;
+        width: 250px;
+    }
+
+    .item__buttons {
+        column-gap: 10px;
+    }
+
+    .item__buttons span {
+        font-size: 21px;
+    }
+
+    .item__price {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 768px) {
+    .item {
+        column-gap: 15px;
+        padding: 0px;
+        width: 320px;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+        row-gap: 15px;
+    }
+
+    .item__info {
+        column-gap: 10px;
+    }
+
+    .item__img {
+        width: 70px;
+    }
+
+    .item__text {
+        row-gap: 2px;
+    }
+
+    .item__title {
+        font-size: 20px;
+    }
+
+    .item__type {
+        font-size: 16px;
+    }
+
+    .item__buy {
+        column-gap: 10px;
+        width: 250px;
+    }
+
+    .item__buttons {
+        column-gap: 10px;
+    }
+
+    .item__buttons span {
+        font-size: 20px;
+    }
+
+    .item__buttons button,
+    .delete__button {
+        width: 30px;
+    }
+
+    .item__price {
+        font-size: 20px;
+    }
+}

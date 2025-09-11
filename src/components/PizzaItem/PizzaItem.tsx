@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './PizzaItem.module.css'
+import { Link } from 'react-router'
 
 interface PizzaItemProps {
     pizza: any
@@ -8,20 +9,25 @@ interface PizzaItemProps {
 const PizzaItem: React.FC<PizzaItemProps> = ({ pizza }) => {
     const [currSize, setCurrSize] = useState<number>(0)
     const [currTesto, setCurrTesto] = useState<string>('')
+    const [pizzaCount, setPizzaCount] = useState<number>(0)
 
     return (
         <>
             <li className={styles.pizza}>
-                <img
-                    src={pizza.img}
-                    alt={pizza.name}
-                    className={styles.pizza__img}
-                />
-                <h3 className={styles.pizza__name}>{pizza.name}</h3>
+                <Link to="/">
+                    <img
+                        src={pizza.imageUrl}
+                        alt={pizza.name}
+                        className={styles.pizza__img}
+                    />
+                </Link>
+
+                <h3 className={styles.pizza__name}>{pizza.title}</h3>
                 <div className={styles.pizza__buttons}>
                     <div className={styles.testo__buttons}>
                         {pizza.testo.map((test: string) => (
                             <button
+                                key={test}
                                 onClick={() => {
                                     currTesto === test
                                         ? setCurrTesto('')
@@ -41,6 +47,7 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza }) => {
                     <div className={styles.testo__buttons}>
                         {pizza.sizes.map((size: number) => (
                             <button
+                                key={size}
                                 onClick={() => {
                                     currSize === size
                                         ? setCurrSize(0)
@@ -60,8 +67,14 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza }) => {
                 </div>
                 <div className={styles.pizza__order}>
                     <p className={styles.pizza__price}>от {pizza.price} ₽</p>
-                    <button className={styles.pizza__button}>
-                        + Добавить 2
+                    <button
+                        className={styles.pizza__button}
+                        onClick={() => setPizzaCount((prev) => (prev += 1))}
+                    >
+                        Добавить{' '}
+                        {pizzaCount > 0 && (
+                            <span className={styles.count}>{pizzaCount}</span>
+                        )}
                     </button>
                 </div>
             </li>

@@ -3,6 +3,7 @@ import styles from './Header.module.css'
 import pizzaImgLogo from '../../assets/pizza-logo.svg'
 import cartImg from '../../assets/cart.svg'
 import { Link } from 'react-router'
+import Search from '../Search/Search'
 
 const Header: React.FC = () => {
     return (
@@ -19,13 +20,16 @@ const Header: React.FC = () => {
                         </div>
                     </div>
                 </Link>
-                <button className={styles.header__cart}>
-                    <p className={styles.cart__price}>520 ₽</p>
-                    <div className={styles.count}>
-                        <img src={cartImg} alt="корзина" />
-                        <p className={styles.cart__count}>3</p>
-                    </div>
-                </button>
+                <Search />
+                <Link to="/cart">
+                    <button className={styles.header__cart}>
+                        <p className={styles.cart__price}>520 ₽</p>
+                        <div className={styles.count}>
+                            <img src={cartImg} alt="корзина" />
+                            <p className={styles.cart__count}>3</p>
+                        </div>
+                    </button>
+                </Link>
             </header>
         </>
     )

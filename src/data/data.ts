@@ -7,4 +7,17 @@ export const categories = [
     'Закрытые',
 ]
 
-export const sorts = ['популярности', 'по цене', 'по алфавиту']
+export const sorts = [
+    {
+        nameRu: 'популярности',
+        nameEn: 'rating',
+    },
+    {
+        nameRu: 'цене',
+        nameEn: 'price',
+    },
+    {
+        nameRu: 'алфавиту',
+        nameEn: 'title',
+    },
+]
