@@ -1,8 +1,8 @@
 import {
-    AnyAction,
     createAsyncThunk,
     createSlice,
-    PayloadAction,
+    type AnyAction,
+    type PayloadAction,
 } from '@reduxjs/toolkit'
 
 type Todo = {
