@@ -23,14 +23,15 @@ export const getCategoySortPizzas = async (
     page: number
 ) => {
     const category = categoryNumber > 0 ? `category=${categoryNumber}` : ''
-    const search = searchValue.length > 0 ? `search=${searchValue}` : ''
+    const search =
+        searchValue && searchValue.length > 0 ? `search=${searchValue}` : ''
 
     const response = await axios.get(
         `https://68bbd6870f2491613edd6539.mockapi.io/pizzas?sortBy=${sort}&order=desc&${category}&${search}&limit=8&page=${page}`
     )
 
     if (response.status !== 200) {
-        throw new Error('ОШИБКА')
+        throw new Error('Failed to fetch pizzas')
     }
 
     return response.data

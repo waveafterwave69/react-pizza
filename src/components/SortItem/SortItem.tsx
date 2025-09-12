@@ -1,6 +1,6 @@
-import { useContext } from 'react'
 import styles from './SortItem.module.css'
-import { PizzaContext } from '../../context/PizzaProvider'
+import { useAppDispatch } from '../../hooks/hooks'
+import { setSort } from '../../store/pizzas/pizzasSlice'
 
 interface SortItemProps {
     sort: string
@@ -17,10 +17,10 @@ const SortItem: React.FC<SortItemProps> = ({
     type,
     nameEn,
 }) => {
-    const { setSort } = useContext(PizzaContext)
+    const dispatch = useAppDispatch()
 
     const handleType = () => {
-        setSort(nameEn)
+        dispatch(setSort(nameEn))
         setSortType(sort)
         setIsOpen(false)
     }

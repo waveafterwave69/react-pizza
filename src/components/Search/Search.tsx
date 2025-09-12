@@ -1,23 +1,21 @@
-import React, { useCallback, useContext, useRef, useEffect } from 'react'
+import React, { useCallback, useRef, useEffect } from 'react'
 import styles from './Search.module.css'
-import { PizzaContext } from '../../context/PizzaProvider'
+import { useAppDispatch } from '../../hooks/hooks'
+import { setSearchValue } from '../../store/pizzas/pizzasSlice'
 
 const Search: React.FC = () => {
-    const { setSearchValue } = useContext(PizzaContext)
+    const dispatch = useAppDispatch()
 
     const timerId = useRef<any | null>(null)
 
-    const debouncedSetSearchValue = useCallback(
-        (value: string) => {
-            if (timerId.current) {
-                clearTimeout(timerId.current)
-            }
-            timerId.current = setTimeout(() => {
-                setSearchValue(value)
-            }, 350)
-        },
-        [setSearchValue]
-    )
+    const debouncedSetSearchValue = useCallback((value: string) => {
+        if (timerId.current) {
+            clearTimeout(timerId.current)
+        }
+        timerId.current = setTimeout(() => {
+            dispatch(setSearchValue(value))
+        }, 350)
+    }, [])
 
     useEffect(() => {
         return () => {

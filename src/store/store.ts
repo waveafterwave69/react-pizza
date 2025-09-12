@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { todoReducer } from './todo/todoSlice'
+import { pizzaReducer } from './pizzas/pizzasSlice'
 
 export const store = configureStore({
     reducer: {
-        todos: todoReducer,
+        pizzas: pizzaReducer,
     },
 })
 

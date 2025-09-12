@@ -1,9 +1,10 @@
-import { useContext } from 'react'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
+import { setPage } from '../../store/pizzas/pizzasSlice'
 import styles from './Pagination.module.css'
-import { PizzaContext } from '../../context/PizzaProvider'
 
 const Pagination: React.FC = () => {
-    const { page, setPage } = useContext(PizzaContext)
+    const dispatch = useAppDispatch()
+    const page = useAppSelector((state) => state.pizzas.page)
 
     const totalPageCount = 3
 
@@ -14,14 +15,14 @@ const Pagination: React.FC = () => {
                 <div className={styles.pagination__buttons}>
                     <button
                         className={styles.pagination__btn}
-                        onClick={() => page > 1 && setPage(page - 1)}
+                        onClick={() => page > 1 && dispatch(setPage(page - 1))}
                     >
                         Предыдущая
                     </button>
                     {[...new Array(totalPageCount)].map((_, index) => (
                         <button
                             key={index}
-                            onClick={() => setPage(index + 1)}
+                            onClick={() => dispatch(setPage(page + 1))}
                             className={
                                 index + 1 === page
                                     ? `${styles.pagination__count} ${styles.active}`
@@ -34,7 +35,7 @@ const Pagination: React.FC = () => {
                     <button
                         className={styles.pagination__btn}
                         onClick={() =>
-                            page < totalPageCount && setPage(page + 1)
+                            page < totalPageCount && dispatch(setPage(page + 1))
                         }
                     >
                         Следующая
