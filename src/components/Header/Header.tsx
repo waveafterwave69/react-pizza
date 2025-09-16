@@ -4,8 +4,14 @@ import pizzaImgLogo from '../../assets/pizza-logo.svg'
 import cartImg from '../../assets/cart.svg'
 import { Link } from 'react-router'
 import Search from '../Search/Search'
+import { useAppSelector } from '../../hooks/hooks'
 
 const Header: React.FC = () => {
+    const items = useAppSelector((state) => state.cart.items)
+    console.log(items)
+    const totalCount = useAppSelector((state) => state.cart.totalCount)
+    const totalPrice = useAppSelector((state) => state.cart.totalPrice)
+
     return (
         <>
             <header className={styles.header}>
@@ -23,10 +29,10 @@ const Header: React.FC = () => {
                 <Search />
                 <Link to="/cart">
                     <button className={styles.header__cart}>
-                        <p className={styles.cart__price}>520 ₽</p>
+                        <p className={styles.cart__price}>{totalPrice} ₽</p>
                         <div className={styles.count}>
                             <img src={cartImg} alt="корзина" />
-                            <p className={styles.cart__count}>3</p>
+                            <p className={styles.cart__count}>{totalCount}</p>
                         </div>
                     </button>
                 </Link>

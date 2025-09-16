@@ -5,14 +5,18 @@ import cart from '../../assets/carttt.svg'
 import trash from '../../assets/trash.svg'
 import EmptyCart from '../EmptyCart/EmptyCart'
 import CartItem from '../CartItem/CartItem'
-
-let da = false
+import { useAppSelector } from '../../hooks/hooks'
+import { Link } from 'react-router'
 
 const CartContent: React.FC = () => {
+    const pizzasCart = useAppSelector((state) => state.cart.items)
+    const totalCount = useAppSelector((state) => state.cart.totalCount)
+    const totalPrice = useAppSelector((state) => state.cart.totalPrice)
+
     return (
         <>
             <section className={styles.cart}>
-                {da ? (
+                {pizzasCart.length < 1 ? (
                     <EmptyCart />
                 ) : (
                     <>
@@ -27,78 +31,27 @@ const CartContent: React.FC = () => {
                             </button>
                         </div>
                         <ul className={styles.cart__list}>
-                            <CartItem
-                                pizza={{
-                                    id: 0,
-                                    imageUrl:
-                                        'https://media.dodostatic.net/image/r:584x584/0198bf57bc517218ab93c762f4b0193e.avif',
-                                    title: 'Супер-пиццы',
-                                    types: [0, 1],
-                                    sizes: [26, 30, 40],
-                                    price: 803,
-                                    category: 0,
-                                    rating: 4,
-                                    testo: ['тонкое', 'традиционное'],
-                                }}
-                            />
-                            <CartItem
-                                pizza={{
-                                    id: 0,
-                                    imageUrl:
-                                        'https://media.dodostatic.net/image/r:584x584/0198bf57bc517218ab93c762f4b0193e.avif',
-                                    title: 'Супер-пиццы',
-                                    types: [0, 1],
-                                    sizes: [26, 30, 40],
-                                    price: 803,
-                                    category: 0,
-                                    rating: 4,
-                                    testo: ['тонкое', 'традиционное'],
-                                }}
-                            />
-                            <CartItem
-                                pizza={{
-                                    id: 0,
-                                    imageUrl:
-                                        'https://media.dodostatic.net/image/r:584x584/0198bf57bc517218ab93c762f4b0193e.avif',
-                                    title: 'Супер-пиццы',
-                                    types: [0, 1],
-                                    sizes: [26, 30, 40],
-                                    price: 803,
-                                    category: 0,
-                                    rating: 4,
-                                    testo: ['тонкое', 'традиционное'],
-                                }}
-                            />
-                            <CartItem
-                                pizza={{
-                                    id: 0,
-                                    imageUrl:
-                                        'https://media.dodostatic.net/image/r:584x584/0198bf57bc517218ab93c762f4b0193e.avif',
-                                    title: 'Супер-пиццы',
-                                    types: [0, 1],
-                                    sizes: [26, 30, 40],
-                                    price: 803,
-                                    category: 0,
-                                    rating: 4,
-                                    testo: ['тонкое', 'традиционное'],
-                                }}
-                            />
+                            {pizzasCart.map((pizza) => (
+                                <CartItem pizza={pizza} key={pizza.id} />
+                            ))}
                         </ul>
                         <div className={styles.cart__info}>
                             <span className={styles.cart__total}>
-                                Всего пицц: <span>3 шт.</span>
+                                Всего пицц: <span>{totalCount} шт.</span>
                             </span>
                             <span className={styles.cart__price}>
-                                Сумма заказа: <span>900 ₽</span>
+                                Сумма заказа: <span>{totalPrice} ₽</span>
                             </span>
                         </div>
                         <div className={styles.cart__buttons}>
-                            <button
+                            <Link
+                                to="/"
                                 className={`${styles.cart__button} ${styles.cart__first}`}
                             >
                                 <img src={path} alt="path" />
+
                                 <span>Вернуться назад</span>
-                            </button>
+                            </Link>
                             <button
                                 className={`${styles.cart__button} ${styles.cart__second}`}
                             >
