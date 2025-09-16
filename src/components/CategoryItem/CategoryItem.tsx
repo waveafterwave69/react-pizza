@@ -1,6 +1,6 @@
-import { useContext } from 'react'
 import styles from './CategoryItem.module.css'
-import { PizzaContext } from '../../context/PizzaProvider'
+import { useAppDispatch } from '../../hooks/hooks'
+import { setCategory } from '../../store/pizzas/pizzasSlice'
 
 interface CategoryItemProps {
     category: string
@@ -15,7 +15,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
     currCategory,
     indexItem,
 }) => {
-    const { setCategory } = useContext(PizzaContext)
+    const dispatch = useAppDispatch()
 
     const isActive = category === currCategory
 
@@ -29,7 +29,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
                         color: isActive ? '#f0f0f0' : '#282828',
                     }}
                     onClick={() => {
-                        setCategory(indexItem)
+                        dispatch(setCategory(indexItem))
                         setCurrCategory(category)
                     }}
                 >
