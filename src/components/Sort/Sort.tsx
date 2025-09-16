@@ -10,7 +10,7 @@ import sortCloseImg from '../../assets/sort-close.svg'
 import SortItem from '../SortItem/SortItem'
 
 interface SortProps {
-    text: string
+    text?: string
 }
 
 const Sort: React.FC<SortProps> = ({ text = 'Сортировка по' }) => {
