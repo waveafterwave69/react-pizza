@@ -1,38 +1,29 @@
 import axios from 'axios'
 
-export const getPizzas = async () => {
-    const response = await fetch(
-        'https://68bbd6870f2491613edd6539.mockapi.io/pizzas'
-    )
-
-    if (!response.ok) {
-        return 'Error'
-    }
-
-    const data = await response.json()
-
-    return data
-}
-
 type Sort = 'rating' | 'price' | 'title'
 
-export const getCategoySortPizzas = async (
+export const getPizzas = async (
     sort: Sort = 'rating',
     categoryNumber: number,
     searchValue: string,
     page: number
 ) => {
-    const category = categoryNumber > 0 ? `category=${categoryNumber}` : ''
-    const search =
-        searchValue && searchValue.length > 0 ? `search=${searchValue}` : ''
+    try {
+        const category = categoryNumber > 0 ? `category=${categoryNumber}` : ''
+        const search =
+            searchValue && searchValue.length > 0 ? `search=${searchValue}` : ''
 
-    const response = await axios.get(
-        `https://68bbd6870f2491613edd6539.mockapi.io/pizzas?sortBy=${sort}&order=desc&${category}&${search}&limit=8&page=${page}`
-    )
+        const response = await axios.get(
+            `https://68bbd6870f2491613edd6539.mockapi.io/pizzas?sortBy=${sort}&order=desc&${category}&${search}&limit=8&page=${page}`
+        )
 
-    if (response.status !== 200) {
-        throw new Error('Failed to fetch pizzas')
+        if (response.status !== 200) {
+            throw new Error('Failed to fetch pizzas')
+        }
+
+        return response.data
+    } catch (error: any) {
+        console.log('error: ', error.message)
+        return error.message
     }
-
-    return response.data
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './PizzaItem.module.css'
 import { Link } from 'react-router'
-import { useAppDispatch } from '../../hooks/hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { addItem } from '../../store/cart/cartSlice'
 
 interface PizzaItemProps {
@@ -9,9 +9,11 @@ interface PizzaItemProps {
 }
 
 const PizzaItem: React.FC<PizzaItemProps> = ({ pizza }) => {
+    const items = useAppSelector((state) => state.cart.items)
+    const currentPizza = items.filter((el) => el.id === pizza.id)
+
     const [currSize, setCurrSize] = useState<number>(0)
     const [currTesto, setCurrTesto] = useState<string>('')
-    const [pizzaCount, setPizzaCount] = useState<number>(0)
 
     const dispatch = useAppDispatch()
 
@@ -86,14 +88,15 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza }) => {
                         className={styles.pizza__button}
                         onClick={() => {
                             if (currSize && currTesto) {
-                                setPizzaCount((prev) => (prev += 1))
                                 addToCart(pizza)
                             }
                         }}
                     >
                         Добавить{' '}
-                        {pizzaCount > 0 && (
-                            <span className={styles.count}>{pizzaCount}</span>
+                        {currentPizza[0]?.count > 0 && (
+                            <span className={styles.count}>
+                                {currentPizza[0]?.count}
+                            </span>
                         )}
                     </button>
                 </div>

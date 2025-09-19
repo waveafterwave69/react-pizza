@@ -22,7 +22,7 @@ const Pagination: React.FC = () => {
                     {[...new Array(totalPageCount)].map((_, index) => (
                         <button
                             key={index}
-                            onClick={() => dispatch(setPage(page + 1))}
+                            onClick={() => dispatch(setPage(index + 1))}
                             className={
                                 index + 1 === page
                                     ? `${styles.pagination__count} ${styles.active}`
