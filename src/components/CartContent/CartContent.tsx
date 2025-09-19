@@ -5,13 +5,16 @@ import cart from '../../assets/carttt.svg'
 import trash from '../../assets/trash.svg'
 import EmptyCart from '../EmptyCart/EmptyCart'
 import CartItem from '../CartItem/CartItem'
-import { useAppSelector } from '../../hooks/hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { Link } from 'react-router'
+import { clearItems } from '../../store/cart/cartSlice'
 
 const CartContent: React.FC = () => {
     const pizzasCart = useAppSelector((state) => state.cart.items)
     const totalCount = useAppSelector((state) => state.cart.totalCount)
     const totalPrice = useAppSelector((state) => state.cart.totalPrice)
+
+    const dispatch = useAppDispatch()
 
     return (
         <>
@@ -25,7 +28,10 @@ const CartContent: React.FC = () => {
                                 <img src={cart} alt="корзина" />
                                 <span>Корзина</span>
                             </h2>
-                            <button className={styles.cart__delete}>
+                            <button
+                                className={styles.cart__delete}
+                                onClick={() => dispatch(clearItems())}
+                            >
                                 <img src={trash} alt="очистить" />
                                 <span>Очистить корзину</span>
                             </button>

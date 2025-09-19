@@ -7,8 +7,6 @@ import Search from '../Search/Search'
 import { useAppSelector } from '../../hooks/hooks'
 
 const Header: React.FC = () => {
-    const items = useAppSelector((state) => state.cart.items)
-    console.log(items)
     const totalCount = useAppSelector((state) => state.cart.totalCount)
     const totalPrice = useAppSelector((state) => state.cart.totalPrice)
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getCategoySortPizzas } from '../../helpers/helpers'
+import { getPizzas } from '../../helpers/helpers'
 
 const initialState = {
     pizzas: [],
@@ -8,6 +8,7 @@ const initialState = {
     page: 1,
     sort: 'rating',
     isLoading: false,
+    isError: false,
 }
 
 export const fetchPizzas = createAsyncThunk(
@@ -15,7 +16,7 @@ export const fetchPizzas = createAsyncThunk(
     async function (params: any, { rejectWithValue }) {
         try {
             const { category, searchValue, page, sort } = params
-            const pizzasData = await getCategoySortPizzas(
+            const pizzasData = await getPizzas(
                 sort,
                 category,
                 searchValue,
@@ -57,13 +58,16 @@ const pizzasSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchPizzas.pending, (state) => {
             state.isLoading = true
+            state.isError = false
         })
         builder.addCase(fetchPizzas.fulfilled, (state, action) => {
             state.pizzas = action.payload
             state.isLoading = false
+            state.isError = false
         })
         builder.addCase(fetchPizzas.rejected, (state) => {
             state.isLoading = false
+            state.isError = true
             console.error('Failed to fetch pizzas.')
         })
     },
